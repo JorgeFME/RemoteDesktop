@@ -1,19 +1,20 @@
-// app.js
+const express = require('express')
+const routes = require('./index.js')
 
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
+const app = express()
+app.set('port', process.env.PORT || 8080)
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Routes
-const indexRouter = require('./index.js');
-app.use('/', indexRouter);
+// middlewares -------------------------------------
+app.use(express.json())
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// routes -------------------------------------------
+app.get('/', (req, res)=>{
+    res.send('Welcome IoT SANBORNS SENSOR IOT V2')/*  */
+})
+app.use('/iot-devices', routes)
 
+// server running -----------------------------------
+app.listen(app.get('port'), ()=>{
+    console.log('server running on port', 'http://localhost:' + app.get('port'))
+})
