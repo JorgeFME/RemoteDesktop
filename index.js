@@ -1,3 +1,19 @@
-const name = 'x';
+// /src/routes/index.js
 
-console.log(name)
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+router.post('/post', (req, res) => {
+  res.send('SUCCESS')
+}) 
+module.exports = router;
+
+/*
+sdfsdf
+ss
+dfsdfsdf
+*/
